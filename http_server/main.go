@@ -1,11 +1,11 @@
-package HttpServer
+package main
 
 import (
     "net/http"
     "log"
 ) 
 
-func open() {
+func main() {
     fs_handler := http.FileServer(http.Dir("static_content/"))
     http.Handle("/", fs_handler)
 
