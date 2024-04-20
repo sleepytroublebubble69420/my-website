@@ -6,7 +6,7 @@ import (
 ) 
 
 func main() {
-    http.HandleFunc("/http_server/", func(w http.ResponseWriter, r *http.Request) {
+    http.HandleFunc("/foo", func(w http.ResponseWriter, r *http.Request) {
         log.Printf("Got request, Method: %s", r.Method)
     })
 
