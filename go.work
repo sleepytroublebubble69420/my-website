@@ -1,3 +1,6 @@
 go 1.21.9
 
-use ./http_server
+use (
+	./database
+	./http_server
+)
