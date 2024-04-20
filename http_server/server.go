@@ -6,6 +6,10 @@ import (
 ) 
 
 func main() {
+    http.HandleFunc("/http_server/", func(w http.ResponseWriter, r *http.Request) {
+        log.Printf("Got request, Method: %s", r.Method)
+    })
+
     fs_handler := http.FileServer(http.Dir("static_content/"))
     http.Handle("/", fs_handler)
 
