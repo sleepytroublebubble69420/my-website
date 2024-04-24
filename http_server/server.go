@@ -1,6 +1,7 @@
 package main
 
 import (
+    "my_website/database"
 
     "net/http"
 
@@ -8,6 +9,8 @@ import (
 ) 
 
 func main() {
+    database.ConnectToDatabase()
+    
     http.HandleFunc("/foo", func(w http.ResponseWriter, r *http.Request) {
         log.Printf("Got request, Method: %s", r.Method)
         err := r.ParseForm()
@@ -25,4 +28,5 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
+
 }
