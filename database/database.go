@@ -1,4 +1,4 @@
-package main
+package database
 
 import (
 	"database/sql"
@@ -9,13 +9,13 @@ import (
 	"github.com/go-sql-driver/mysql"
 )
 
-var db *sql.DB
-
 type User struct {
 	email string
 }
 
-func main() {
+var db *sql.DB
+
+func connectToDatabase() {
 	cfg := *mysql.NewConfig()
 	cfg.User = os.Getenv("DBUSER")
 	cfg.Passwd = os.Getenv("DBPASS")
@@ -32,12 +32,6 @@ func main() {
 		log.Fatal(pingErr)
 	}
 	log.Println("Connected!")
-
-    user, err := userByEmail("test@test")
-    if err != nil {
-        log.Fatal(err)
-    }
-    log.Printf("User found: %v\n", user.email)
 }
 
 func userByEmail(email string) (User, error) {
