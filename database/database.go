@@ -15,7 +15,7 @@ type User struct {
 
 var db *sql.DB
 
-func connectToDatabase() {
+func ConnectToDatabase() {
 	cfg := *mysql.NewConfig()
 	cfg.User = os.Getenv("DBUSER")
 	cfg.Passwd = os.Getenv("DBPASS")
@@ -34,7 +34,7 @@ func connectToDatabase() {
 	log.Println("Connected!")
 }
 
-func userByEmail(email string) (User, error) {
+func UserByEmail(email string) (User, error) {
 	var user User
     var throwaway_value string
 
